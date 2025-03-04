@@ -11,6 +11,10 @@
 #define TABR G(S(KC_RBRC))
 #define SPCL A(G(KC_LEFT))
 #define SPC_R A(G(KC_RGHT))
+#define UNDO G(KC_Z)
+#define CUT G(KC_X)
+#define COPY G(KC_C)
+#define PASTE G(KC_V)
 #define LA_SYM MO(SYM)
 #define LA_NAV MO(NAV)
 
@@ -38,34 +42,34 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         XXXXXXX, KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,    /**/  KC_J,    KC_L,    KC_U,    KC_Y,    KC_QUOT,  XXXXXXX,
         XXXXXXX, KC_A,    KC_R,    KC_S,    KC_T,    KC_G,    /**/  KC_M,    KC_N,    KC_E,    KC_I,    KC_O,     XXXXXXX,
         XXXXXXX, KC_Z,    KC_X,    KC_C,    KC_D,    KC_V,    /**/  KC_K,    KC_H,    KC_COMM, KC_DOT,  KC_SLSH,  XXXXXXX,
-                                   LA_NAV,  KC_SPC, XXXXXXX,  /**/  XXXXXXX, KC_LSFT,  LA_SYM
+                                   LA_NAV,  KC_LSFT, XXXXXXX,  /**/  XXXXXXX, KC_SPC,  LA_SYM
     ),
 
     [SYM] = LAYOUT_split_3x6_3(
-        XXXXXXX, KC_EXLM,  KC_AT,  KC_HASH, KC_DLR,  KC_PERC, /**/  KC_EQL,  KC_GRV,  KC_COLN, KC_SCLN, KC_PLUS,   XXXXXXX,
-        XXXXXXX, OS_SHFT, OS_CTRL, OS_ALT,  OS_CMD,  KC_CIRC, /**/  KC_ASTR, KC_LPRN, KC_LCBR, KC_LBRC, KC_MINS,  XXXXXXX,
-        XXXXXXX, XXXXXXX, XXXXXXX, KC_BSLS, KC_PIPE, KC_AMPR, /**/  KC_TILD, KC_RPRN, KC_RCBR, KC_RBRC, KC_UNDS,  XXXXXXX,
+        XXXXXXX, KC_EXLM, KC_AT,  KC_HASH, KC_DLR,  KC_PERC,  /**/ KC_PLUS, KC_EQL,  KC_BSLS, KC_PIPE, KC_GRV, XXXXXXX,
+        XXXXXXX, KC_ASTR, KC_LPRN, KC_LCBR, KC_LBRC, KC_CIRC, /**/ KC_MINS, OS_CMD,  OS_ALT,  OS_CTRL, OS_SHFT, XXXXXXX,
+        XXXXXXX, KC_TILD, KC_RPRN, KC_RCBR, KC_RBRC, XXXXXXX, /**/ KC_UNDS, XXXXXXX, KC_COLN, KC_SCLN, KC_AMPR, XXXXXXX,
                                    _______, MO(FUN), XXXXXXX, /**/  XXXXXXX, _______, _______
     ),
 
     [NAV] = LAYOUT_split_3x6_3(
         XXXXXXX, KC_ESC,  KC_TAB,  SW_WIN,  TABL,    TABR,    /**/  KC_PGUP, HOME,    KC_UP,   END,     KC_BSPC, XXXXXXX,
         XXXXXXX, OS_SHFT, OS_CTRL, OS_ALT,  OS_CMD,  XXXXXXX, /**/  KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, KC_DEL,  XXXXXXX,
-        XXXXXXX, KC_UNDO, KC_CUT,  KC_COPY, XXXXXXX, KC_PSTE, /**/  KC_CAPS, XXXXXXX, XXXXXXX, SW_LANG, KC_ENT,  XXXXXXX,
+        XXXXXXX, UNDO,    CUT,     COPY,    XXXXXXX, PASTE, /**/  KC_CAPS, XXXXXXX, XXXXXXX, SW_LANG, KC_ENT,  XXXXXXX,
                                    _______, _______, XXXXXXX, /**/  XXXXXXX, _______, _______
     ),
 
     [NUM] = LAYOUT_split_3x6_3(
         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, QK_BOOT, /**/  KC_EQL,  KC_7,  KC_8,  KC_9, KC_PLUS,    XXXXXXX,
         XXXXXXX, OS_SHFT, OS_CTRL, OS_ALT,  OS_CMD,  XXXXXXX, /**/  KC_ASTR, KC_4,  KC_5,  KC_6, KC_MINS,    XXXXXXX,
-        XXXXXXX, KC_UNDO, KC_CUT,  KC_COPY, XXXXXXX, KC_PSTE, /**/  KC_0,    KC_1,  KC_2,  KC_3, KC_SLASH,   XXXXXXX,
+        XXXXXXX, UNDO,    CUT,     COPY,    XXXXXXX, PASTE, /**/  KC_0,    KC_1,  KC_2,  KC_3, KC_SLASH,   XXXXXXX,
                                    _______, _______, XXXXXXX, /**/  XXXXXXX, _______, _______
     ),
 
     [FUN] = LAYOUT_split_3x6_3(
         XXXXXXX, KC_MSTP, KC_MPRV, KC_MNXT, KC_MPLY, KC_VOLU, /**/  XXXXXXX,  KC_F9,  KC_F10, KC_F11, KC_F12,  XXXXXXX,
         XXXXXXX, OS_SHFT, OS_CTRL, OS_ALT,  OS_CMD,  KC_VOLD, /**/  XXXXXXX,  KC_F5,  KC_F6,  KC_F7,  KC_F8,   XXXXXXX,
-        XXXXXXX, KC_UNDO, KC_CUT,  KC_COPY, XXXXXXX, KC_PSTE, /**/  XXXXXXX,  KC_F1,  KC_F2,  KC_F3,  KC_F4,   XXXXXXX,
+        XXXXXXX, UNDO,    CUT,     COPY,    XXXXXXX, PASTE, /**/  XXXXXXX,  KC_F1,  KC_F2,  KC_F3,  KC_F4,   XXXXXXX,
                                    _______, _______, XXXXXXX, /**/  XXXXXXX, _______, _______
     ),
 };
