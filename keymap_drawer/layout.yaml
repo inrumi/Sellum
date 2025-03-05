@@ -1,27 +1,29 @@
-layout: { qmk_keyboard: janus }
+layout:
+  qmk_keyboard: corne_rotated
+  layout_name: LAYOUT_split_3x5_3
 layers:
   DEF:
-    - [ Q, W, F, P, B, J, L, U, Y, '''' ]
-    - [ A, R, S, T, G, M, N, E, I, O ]
-    - [ Z, X, C, D, V, K, H, ',', ., / ]
-    - [ NAV, Space, Shift, SYM ]
+    - [ Q, W, F, P, B,      J, L, U, Y, '''' ]
+    - [ A, R, S, T, G,      M, N, E, I, O ]
+    - [ Z, X, C, D, V,      K, H, ',', ., / ]
+    - [ Shift, NAV, NUM,    FUN, SYM, Space ]
   SYM:
-    - [ '!', '@', '#', $, '%', '=', '`', ':', ;, + ]
-    - [ Shift, Ctrl, Alt, Gui, ^, '*', (, '{', '[', '-' ]
-    - [ '', '', \, '|', '&', '~', ), '}', ']', _ ]
-    - [ NAV, FUN, Shift, { t: SYM, type: held } ]
+    - [ '!', '@', '#', $, '%',      +, '=', \, '|', BSpace ]
+    - [ '*', (, '{', '[', ^,        '-', Gui, Alt, Ctrl, Shift ]
+    - [ '~', ), '}', ']', '`',      _, '', ':', ;, '&' ]
+    - [ Shift, NAV, NUM, FUN,       { t: SYM, type: held }, Space ]
   NAV:
-    - [ Esc, Tab, Gui Tab, Tab Prev, Tab Next, Page Up, Home, Up, End, BSpace ]
-    - [ Shift, Ctrl, Alt, Gui, '', Page Down, Left, Down, Right, Del ]
-    - [ Undo, Cut, Copy, '', Paste, Caps Lock, '', '', Lang Swap, Enter ]
-    - [ { t: NAV, type: held }, Space, Shift, SYM ]
+    - [ Esc, Tab, Gui Tab, Tab Prev, Tab Next,    Page Up, Home, Up, End, BSpace ]
+    - [ Shift, Ctrl, Alt, Gui, '',                Page Down, Left, Down, Right, Del ]
+    - [ Undo, Cut, Copy, '', Paste,               Caps Lock, '', '', '', Enter ]
+    - [ Shift, { t: NAV, type: held }, NUM,       FUN, SYM, Space ]
   NUM:
-    - [ '', '', '', '', Reset, '=', '7', '8', '9', + ]
-    - [ Shift, Ctrl, Alt, Gui, '', '*', '4', '5', '6', '-' ]
-    - [ Undo, Cut, Copy, '', Paste, '0', '1', '2', '3', / ]
-    - [ { t: NAV, type: held }, Space, Shift, { t: SYM, type: held } ]
+    - [ '', '', '', '', Reset,                '+', '7', '8', '9', BSpace ]
+    - [ Shift, Ctrl, Alt, Gui, '',            '-', '4', '5', '6', '=' ]
+    - [ Undo, Cut, Copy, '', Paste,           '/', '1', '2', '3', '*' ]
+    - [ Space, NAV, { t: NUM, type: held },   FUN, '0', Shift ]
   FUN:
-    - [ Stop, Prev, Next, Play, Vol Up, '', F9, F10, F11, F12 ]
-    - [ Shift, Ctrl, Alt, Gui, Vol Down, '', F5, F6, F7, F8 ]
-    - [ Undo, Cut, Copy, '', Paste, '', F1, F2, F3, F4 ]
-    - [ NAV, { t: FUN, type: held }, Shift, { t: SYM, type: held } ]
+    - [ Stop, Prev, Next, Play, Vol Up,       '', F9, F10, F11, F12 ]
+    - [ Shift, Ctrl, Alt, Gui, Vol Down,      '', F5, F6, F7, F8 ]
+    - [ Undo, Cut, Copy, '', Paste,           '', F1, F2, F3, F4 ]
+    - [ NAV, FUN, NUM,                        { t: FUN, type: held }, Shift, SYM ]

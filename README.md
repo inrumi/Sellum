@@ -1,4 +1,4 @@
-# My Custom Keyboard Layout
+# Sellum - A custom approach to Callum + Seniply for 36 Keys 
 
 This is my own keyboard layout, based on the Callum layout. I made some changes to improve functionality by adding ideas
 from the Seniply layout. One of the main things I wanted was to have different layers for numbers and function keys.
