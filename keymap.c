@@ -18,7 +18,6 @@
 #define LA_SYM MO(SYM)
 #define LA_NAV MO(NAV)
 #define LA_FUN MO(FUN)
-#define LA_NUM MO(NUM)
 
 enum layers {
     DEF,
@@ -44,28 +43,35 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         XXXXXXX, KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,    /**/  KC_J,    KC_L,    KC_U,    KC_Y,    KC_QUOT,  XXXXXXX,
         XXXXXXX, KC_A,    KC_R,    KC_S,    KC_T,    KC_G,    /**/  KC_M,    KC_N,    KC_E,    KC_I,    KC_O,     XXXXXXX,
         XXXXXXX, KC_Z,    KC_X,    KC_C,    KC_D,    KC_V,    /**/  KC_K,    KC_H,    KC_COMM, KC_DOT,  KC_SLSH,  XXXXXXX,
-                                   LA_NAV,  KC_LSFT, LA_NUM,  /**/  LA_FUN,  KC_SPC,  LA_SYM
+                                   LA_NAV,  KC_LSFT, LA_FUN,  /**/  KC_BSPC, KC_SPC,  LA_SYM
     ),
 
+//    [SYM] = LAYOUT_split_3x6_3(
+//        XXXXXXX, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, /**/ KC_PLUS, KC_EQL,  KC_BSLS, KC_PIPE, KC_BSPC, XXXXXXX,
+//        XXXXXXX, KC_ASTR, KC_LPRN, KC_LCBR, KC_LBRC, KC_CIRC, /**/ KC_MINS, OS_CMD,  OS_ALT,  OS_CTRL, OS_SHFT, XXXXXXX,
+//        XXXXXXX, KC_TILD, KC_RPRN, KC_RCBR, KC_RBRC, KC_GRV,  /**/ KC_UNDS, XXXXXXX, KC_COLN, KC_SCLN, KC_AMPR, XXXXXXX,
+//                                   _______, _______, _______, /**/  _______, _______, _______
+//    ),
+
     [SYM] = LAYOUT_split_3x6_3(
-        XXXXXXX, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, /**/ KC_PLUS, KC_EQL,  KC_BSLS, KC_PIPE, KC_BSPC, XXXXXXX,
-        XXXXXXX, KC_ASTR, KC_LPRN, KC_LCBR, KC_LBRC, KC_CIRC, /**/ KC_MINS, OS_CMD,  OS_ALT,  OS_CTRL, OS_SHFT, XXXXXXX,
-        XXXXXXX, KC_TILD, KC_RPRN, KC_RCBR, KC_RBRC, KC_GRV, /**/ KC_UNDS, XXXXXXX, KC_COLN, KC_SCLN, KC_AMPR, XXXXXXX,
+        XXXXXXX, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, /**/  KC_ASTR, KC_LPRN, KC_RPRN, KC_MINS, KC_EQL,   XXXXXXX,
+        XXXXXXX, OS_SHFT, OS_CTRL, OS_ALT,  OS_CMD,  KC_CIRC, /**/  KC_AMPR, KC_GRV,  KC_LBRC, KC_RBRC, KC_BSLS,  XXXXXXX,
+        XXXXXXX, UNDO,    CUT,     COPY,    XXXXXXX, PASTE,   /**/  KC_PIPE, KC_TILD, KC_LCBR, KC_RCBR, KC_SCLN,  XXXXXXX,
                                    _______, _______, _______, /**/  _______, _______, _______
     ),
 
     [NAV] = LAYOUT_split_3x6_3(
-        XXXXXXX, KC_ESC,  KC_TAB,  SW_WIN,  TABL,    TABR,    /**/  KC_PGUP, HOME,    KC_UP,   END,     KC_BSPC, XXXXXXX,
-        XXXXXXX, OS_SHFT, OS_CTRL, OS_ALT,  OS_CMD,  XXXXXXX, /**/  KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, KC_DEL,  XXXXXXX,
+        XXXXXXX, KC_ESC,  KC_TAB,  SW_WIN,  XXXXXXX, XXXXXXX, /**/  KC_PGUP, HOME,    KC_UP,   END,     XXXXXXX, XXXXXXX,
+        XXXXXXX, OS_SHFT, OS_CTRL, OS_ALT,  OS_CMD,  XXXXXXX, /**/  KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, XXXXXXX,  XXXXXXX,
         XXXXXXX, UNDO,    CUT,     COPY,    XXXXXXX, PASTE,   /**/  KC_CAPS, XXXXXXX, XXXXXXX, XXXXXXX, KC_ENT,  XXXXXXX,
-                                   _______, _______, _______, /**/  _______, _______, _______
+                                   _______, _______, _______, /**/  KC_DEL, _______, _______
     ),
 
     [NUM] = LAYOUT_split_3x6_3(
-        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, QK_BOOT, /**/  KC_PLUS, KC_7,  KC_8,  KC_9, KC_BSPC,   XXXXXXX,
-        XXXXXXX, OS_SHFT, OS_CTRL, OS_ALT,  OS_CMD,  XXXXXXX, /**/  KC_MINS, KC_4,  KC_5,  KC_6, KC_EQL,    XXXXXXX,
-        XXXXXXX, UNDO,    CUT,     COPY,    XXXXXXX, PASTE,   /**/  KC_SLASH,KC_1,  KC_2,  KC_3, KC_ASTR,   XXXXXXX,
-                                   _______, _______, _______, /**/  _______, KC_0, _______
+        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, QK_BOOT, /**/  KC_PLUS, KC_7,  KC_8,  KC_9, KC_EQL,   XXXXXXX,
+        XXXXXXX, OS_SHFT, OS_CTRL, OS_ALT,  OS_CMD,  XXXXXXX, /**/  KC_MINS, KC_4,  KC_5,  KC_6, KC_ASTR,    XXXXXXX,
+        XXXXXXX, UNDO,    CUT,     COPY,    XXXXXXX, PASTE,   /**/  KC_0,    KC_1,  KC_2,  KC_3, KC_SLASH,   XXXXXXX,
+                                   _______, _______, _______, /**/  _______, _______, _______
     ),
 
     [FUN] = LAYOUT_split_3x6_3(
@@ -139,6 +145,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     return true;
 }
 
-//layer_state_t layer_state_set_user(layer_state_t state) {
-//    return update_tri_layer_state(state, SYM, NAV, NUM);
-//}
+layer_state_t layer_state_set_user(layer_state_t state) {
+    return update_tri_layer_state(state, SYM, NAV, NUM);
+}
