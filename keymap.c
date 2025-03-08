@@ -46,29 +46,22 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                    LA_NAV,  KC_LSFT, LA_FUN,  /**/  KC_BSPC, KC_SPC,  LA_SYM
     ),
 
-//    [SYM] = LAYOUT_split_3x6_3(
-//        XXXXXXX, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, /**/ KC_PLUS, KC_EQL,  KC_BSLS, KC_PIPE, KC_BSPC, XXXXXXX,
-//        XXXXXXX, KC_ASTR, KC_LPRN, KC_LCBR, KC_LBRC, KC_CIRC, /**/ KC_MINS, OS_CMD,  OS_ALT,  OS_CTRL, OS_SHFT, XXXXXXX,
-//        XXXXXXX, KC_TILD, KC_RPRN, KC_RCBR, KC_RBRC, KC_GRV,  /**/ KC_UNDS, XXXXXXX, KC_COLN, KC_SCLN, KC_AMPR, XXXXXXX,
-//                                   _______, _______, _______, /**/  _______, _______, _______
-//    ),
-
     [SYM] = LAYOUT_split_3x6_3(
-        XXXXXXX, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, /**/  KC_ASTR, KC_LPRN, KC_RPRN, KC_MINS, KC_EQL,   XXXXXXX,
-        XXXXXXX, OS_SHFT, OS_CTRL, OS_ALT,  OS_CMD,  KC_CIRC, /**/  KC_AMPR, KC_GRV,  KC_LBRC, KC_RBRC, KC_BSLS,  XXXXXXX,
-        XXXXXXX, UNDO,    CUT,     COPY,    XXXXXXX, PASTE,   /**/  KC_PIPE, KC_TILD, KC_LCBR, KC_RCBR, KC_SCLN,  XXXXXXX,
+        XXXXXXX, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, /**/  KC_ASTR, KC_LPRN, KC_RPRN, KC_MINS, KC_BSPC,   XXXXXXX,
+        XXXXXXX, OS_SHFT, OS_CTRL, OS_ALT,  OS_CMD,  KC_CIRC, /**/  KC_AMPR, KC_LBRC, KC_RBRC, KC_GRV,  KC_BSLS,  XXXXXXX,
+        XXXXXXX, UNDO,    CUT,     COPY,    XXXXXXX, PASTE,   /**/  KC_PIPE, KC_LCBR, KC_RCBR, KC_EQL,  KC_SCLN,  XXXXXXX,
                                    _______, _______, _______, /**/  _______, _______, _______
     ),
 
     [NAV] = LAYOUT_split_3x6_3(
-        XXXXXXX, KC_ESC,  KC_TAB,  SW_WIN,  XXXXXXX, XXXXXXX, /**/  KC_PGUP, HOME,    KC_UP,   END,     XXXXXXX, XXXXXXX,
-        XXXXXXX, OS_SHFT, OS_CTRL, OS_ALT,  OS_CMD,  XXXXXXX, /**/  KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, XXXXXXX,  XXXXXXX,
+        XXXXXXX, KC_ESC,  KC_TAB,  SW_WIN,  XXXXXXX, XXXXXXX, /**/  KC_PGUP, HOME,    KC_UP,   END,     KC_BSPC, XXXXXXX,
+        XXXXXXX, OS_SHFT, OS_CTRL, OS_ALT,  OS_CMD,  XXXXXXX, /**/  KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, KC_DEL,  XXXXXXX,
         XXXXXXX, UNDO,    CUT,     COPY,    XXXXXXX, PASTE,   /**/  KC_CAPS, XXXXXXX, XXXXXXX, XXXXXXX, KC_ENT,  XXXXXXX,
-                                   _______, _______, _______, /**/  KC_DEL, _______, _______
+                                   _______, _______, _______, /**/  _______, _______, _______
     ),
 
     [NUM] = LAYOUT_split_3x6_3(
-        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, QK_BOOT, /**/  KC_PLUS, KC_7,  KC_8,  KC_9, KC_EQL,   XXXXXXX,
+        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, QK_BOOT, /**/  KC_PLUS, KC_7,  KC_8,  KC_9, KC_EQL,    XXXXXXX,
         XXXXXXX, OS_SHFT, OS_CTRL, OS_ALT,  OS_CMD,  XXXXXXX, /**/  KC_MINS, KC_4,  KC_5,  KC_6, KC_ASTR,    XXXXXXX,
         XXXXXXX, UNDO,    CUT,     COPY,    XXXXXXX, PASTE,   /**/  KC_0,    KC_1,  KC_2,  KC_3, KC_SLASH,   XXXXXXX,
                                    _______, _______, _______, /**/  _______, _______, _______
