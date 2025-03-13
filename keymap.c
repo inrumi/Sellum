@@ -37,35 +37,37 @@ enum keycodes {
 
     SW_WIN,  // Switch to next window         (cmd-tab)
     SW_LANG, // Switch to next input language (ctl-spc)
+    SW_ALT,  // Switch to next window in the same app context (macos behavior) (alt-win)
+    SW_CTL, // Switch to next tab in the same window (ctrl-win)
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [DEF] = LAYOUT_split_3x6_3(
         XXXXXXX, KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,    /**/  KC_J,    KC_L,    KC_U,    KC_Y,    KC_QUOT,  XXXXXXX,
         XXXXXXX, KC_A,    KC_R,    KC_S,    KC_T,    KC_G,    /**/  KC_M,    KC_N,    KC_E,    KC_I,    KC_O,     XXXXXXX,
-        XXXXXXX, KC_Z,    KC_X,    KC_C,    KC_D,    KC_V,    /**/  KC_K,    KC_H,    KC_COMM, KC_DOT,  KC_SLSH,  XXXXXXX,
+        XXXXXXX, KC_Z,    KC_X,    KC_C,    KC_D,    KC_V,    /**/  KC_K,    KC_H,    KC_COMM, KC_DOT,  KC_SCLN,  XXXXXXX,
                                    LA_NAV,  KC_LSFT, LA_FUN,  /**/  KC_ENT, KC_SPC,  LA_SYM
     ),
 
     [SYM] = LAYOUT_split_3x6_3(
-        XXXXXXX, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, /**/  KC_ASTR, KC_LPRN, KC_RPRN, KC_MINS, KC_BSPC,   XXXXXXX,
+        XXXXXXX, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, /**/  KC_ASTR, KC_LPRN, KC_RPRN, KC_MINS, KC_EQL,   XXXXXXX,
         XXXXXXX, OS_SHFT, OS_CTRL, OS_ALT,  OS_CMD,  KC_CIRC, /**/  KC_AMPR, KC_LBRC, KC_RBRC, KC_GRV,  KC_BSLS,  XXXXXXX,
-        XXXXXXX, UNDO,    CUT,     COPY,    REDO,    PASTE,   /**/  KC_PIPE, KC_LCBR, KC_RCBR, KC_EQL,  KC_SCLN,  XXXXXXX,
-                                   _______, _______, _______, /**/  _______, _______, _______
+        XXXXXXX, UNDO,    CUT,     COPY,    REDO,    PASTE,   /**/  KC_PIPE, KC_LCBR, KC_RCBR, KC_SLSH, KC_QUES,  XXXXXXX,
+                               _______, _______, _______, /**/  _______, _______, _______
     ),
 
     [NAV] = LAYOUT_split_3x6_3(
-        XXXXXXX, KC_ESC,  KC_TAB,  SW_WIN,  XXXXXXX, XXXXXXX, /**/  KC_PGUP, HOME,    KC_UP,   END,     KC_BSPC, XXXXXXX,
+        XXXXXXX, KC_ESC,  KC_TAB,  SW_WIN,  SW_ALT,  SW_CTL, /**/   KC_PGUP, HOME,    KC_UP,   END,     KC_BSPC, XXXXXXX,
         XXXXXXX, OS_SHFT, OS_CTRL, OS_ALT,  OS_CMD,  XXXXXXX, /**/  KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, KC_DEL,  XXXXXXX,
         XXXXXXX, UNDO,    CUT,     COPY,    REDO,    PASTE,   /**/  KC_CAPS, XXXXXXX, XXXXXXX, XXXXXXX, KC_ENT,  XXXXXXX,
                                    _______, _______, _______, /**/  _______, _______, _______
     ),
 
     [NUM] = LAYOUT_split_3x6_3(
-        XXXXXXX, KC_PLUS, KC_MINS, KC_ASTR, KC_SLASH, KC_EQL, /**/  XXXXXXX,  KC_7,  KC_8,  KC_9, KC_BSPC,   XXXXXXX,
-        XXXXXXX, OS_SHFT, OS_CTRL, OS_ALT,  OS_CMD,   XXXXXXX,/**/  XXXXXXX, KC_4,  KC_5,  KC_6, XXXXXXX,   XXXXXXX,
-        XXXXXXX, UNDO,    CUT,     COPY,    REDO,     PASTE,  /**/  KC_0,    KC_1,  KC_2,  KC_3, XXXXXXX,   XXXXXXX,
-                                   _______, _______,  QK_BOOT, /**/  _______, _______, _______
+        XXXXXXX, KC_PLUS, KC_MINS, KC_ASTR, KC_SLASH, KC_EQL,  /**/  XXXXXXX, KC_7,  KC_8,  KC_9, KC_BSPC,   XXXXXXX,
+        XXXXXXX, OS_SHFT, OS_CTRL, OS_ALT,  OS_CMD,   XXXXXXX, /**/  KC_0,    KC_4,  KC_5,  KC_6, KC_COMM,   XXXXXXX,
+        XXXXXXX, UNDO,    CUT,     COPY,    REDO,     PASTE,   /**/  XXXXXXX, KC_1,  KC_2,  KC_3, KC_DOT,    XXXXXXX,
+                                   _______, _______,  QK_BOOT, /**/ _______, _______, _______
     ),
 
     [FUN] = LAYOUT_split_3x6_3(
@@ -103,6 +105,8 @@ bool is_oneshot_ignored_key(uint16_t keycode) {
 
 bool sw_win_active = false;
 bool sw_lang_active = false;
+bool sw_alt_active = false;
+bool sw_ctl_active = false;
 
 oneshot_state os_shft_state = os_up_unqueued;
 oneshot_state os_ctrl_state = os_up_unqueued;
@@ -116,6 +120,14 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     );
     update_swapper(
         &sw_lang_active, KC_LCTL, KC_SPC, SW_LANG,
+        keycode, record
+    );
+    update_swapper(
+        &sw_alt_active, KC_LALT, KC_TAB, SW_ALT,
+        keycode, record
+    );
+    update_swapper(
+        &sw_ctl_active, KC_LCTL, KC_TAB, SW_CTL,
         keycode, record
     );
 
