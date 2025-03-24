@@ -8,14 +8,14 @@ layers:
     - [ Z, X, C, D, V,      K, H, ',', ., / ]
     - [ NAV, Shift, FUN,    Enter, Space, SYM ]
   SYM:
-    - [ '!', '@', '#', $, '%',          '*', '(', ')', '-', BSpace ]
+    - [ '!', '@', '#', $, '%',          '*', '(', ')', { t: '-', s: '_' }, { t: '''', s: '"' } ]
     - [ Shift, Ctrl, Alt, Gui, ^,       '&', { t: '[', s: '{' }, { t: '}', s: '}' }, { t: '`', s: '~' }, { t: '\', s: '|' } ]
-    - [ Undo, Cut, Copy, Redo, Paste,   '|', '{', '}', { t: '=', s: '+' }, { t: ;, s: ':' } ]
+    - [ Undo, Cut, Copy, Redo, Paste,   '|', '{', '}', ':', { t: ';', s: ':' } ]
     - [ NAV, Shift, FUN,                Enter, Space, { t: SYM, type: 'held' } ]
   NAV:
-    - [ Esc, Tab, Gui Tab, '', '',                Page Up, Home, Up, End, BSpace ]
+    - [ Esc, Tab, '', '', '',                Page Up, Home, Up, End, BSpace ]
     - [ Shift, Ctrl, Alt, Gui, '',                Page Down, Left, Down, Right, Del ]
-    - [ Undo, Cut, Copy, Redo, Paste,               Caps Lock, '', '', '', Enter ]
+    - [ Undo, Cut, Copy, Redo, Paste,               Caps Lock, App Switch, Win Switch, Tab Switch, Enter ]
     - [ { t: NAV, type: 'held' }, Shift, FUN,     Enter, Space, SYM ]
   NUM:
     - [ '+', '-', '*', '/', '=',                 '', '7', '8', '9', BSpace ]
